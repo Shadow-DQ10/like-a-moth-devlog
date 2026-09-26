@@ -1,0 +1,125 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="AIと個人でゲームを作る LIKE A MOTH 開発記録"><title>LIKE A MOTH — Development Archive</title><style>
+:root{--bg:#06111b;--panel:#0b1c29;--text:#e7e5dc;--muted:#8fa3ae;--cyan:#74d6df;--gold:#d5ae5c;--line:#29414f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 75% 0,#17313e,#06111b 38%,#040a10);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;line-height:1.95}
+.wrap{width:min(1000px,92vw);margin:auto}nav{position:sticky;top:0;z-index:10;background:#050c13e8;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:13px 0}.brand{font:700 16px Georgia;letter-spacing:.2em;color:#f5e7c2}nav a{font-size:11px;color:var(--muted);text-decoration:none;margin-left:15px}
+header{padding:90px 0 55px}.ey{color:var(--cyan);font-size:11px;letter-spacing:.22em}h1{font:700 clamp(48px,9vw,94px)/.92 Georgia;margin:.2em 0;color:#f5ead0;letter-spacing:.07em}.lead{max-width:720px;color:#c6d0d3;font-size:18px}.depth{display:inline-block;margin-top:18px;padding:8px 13px;border:1px solid var(--line);color:var(--gold);font-size:12px}
+.index{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:25px 0 70px}.index a{border:1px solid var(--line);padding:13px;color:#b9c8cc;text-decoration:none;background:#091721}.index b{color:var(--cyan);font-size:10px;letter-spacing:.14em;display:block}
+article,.record-block{max-width:820px;margin:0 auto 70px;padding:34px;background:linear-gradient(145deg,#102635e8,#07131ee8);border:1px solid var(--line);box-shadow:0 18px 55px #0005}
+h2{font:700 31px/1.4 Georgia,"Yu Mincho",serif;color:#f4ead3;margin-top:70px;border-top:1px solid var(--line);padding-top:40px}h2:first-child{margin-top:0;border-top:0;padding-top:0}
+p{color:#d6dcdd}.meta{color:var(--cyan);font-size:10px;letter-spacing:.16em}.box{background:#071721;border-left:2px solid var(--cyan);padding:14px 18px;margin:24px 0}.box b{display:block;color:var(--gold);font-size:10px;letter-spacing:.15em}.box span{display:block;color:#aab9be;font-size:13px}
+figure.dev-shot{margin:30px 0;background:#050d14;border:1px solid var(--line);padding:10px}figure.dev-shot img{width:100%;height:auto;display:block}figure.dev-shot figcaption{padding:11px 7px 4px;color:#91a6af;font-size:12px}.capture{color:var(--gold);font-size:10px;letter-spacing:.14em}footer{border-top:1px solid var(--line);padding:35px 0 60px;color:var(--muted);font-size:11px}.new{color:var(--gold)}
+@media(max-width:650px){.index{grid-template-columns:1fr}article,.record-block{padding:22px}h2{font-size:26px}}
+</style></head><body>
+<nav><div class="wrap"><div class="brand">LIKE A MOTH</div><div><a href="#records">RECORDS</a><a href="#record-010">LATEST</a></div></div></nav>
+<header class="wrap"><div class="ey">DEVELOPMENT ARCHIVE / INTEGRATED EDITION</div><h1>LIKE A<br>MOTH</h1><p class="lead">ゲーム制作に一度挫折した個人開発者が、AIを開発チームとして使いながら、ローポリ・ダークファンタジーRPGを形にしていく記録。</p><div class="depth">CURRENT DEPTH — ED / RECRUITMENT ARCHITECTURE</div></header>
+<main class="wrap" id="records"><div class="index"><a href="#record-001"><b>RECORD 001</b>ゲームを作りたかった。でも、作れなかった。</a><a href="#record-002"><b>RECORD 002</b>LIKE A MOTHというゲームを考える</a><a href="#record-003"><b>RECORD 003</b>AIと最初の戦闘を作る</a><a href="#record-004"><b>RECORD 004</b>Cubeの世界から「封印された遺跡」へ</a><a href="#record-005"><b>RECORD 005</b>敵がいない。測ってみたら理由が違った</a><a href="#record-006"><b>RECORD 006 / NEW</b>広くしただけでは、探索にはならなかった。</a><a href="#record-007"><b>RECORD 007</b>敵に囲まれたまま、電源を入れる。</a><a href="#record-008"><b>RECORD 008 / NEW</b>拾ったGは、まだ自分のものではない。</a><a href="#record-009"><b>RECORD 009 / NEW</b>遺跡の外にも、ゲームを作る。</a><a href="#record-010"><b>RECORD 010 / NEW</b>仲間が増えると、探索の仕方まで変わる。</a></div><section class="record-block"><h2 id="record-001">RECORD 001 — ゲームを作りたかった。でも、作れなかった。</h2>
+<p>ゲームは昔から好きだった。ドラゴンクエストで新しい町に着けば、まず町の人全員に話しかける。ファイナルファンタジーでは新しい装備を見るだけでも楽しい。ゼルダでは目的地とは反対方向に怪しい道があれば、つい寄り道する。そしてフロム・ソフトウェア作品のダークファンタジーに触れてからは、「説明されていないことを想像する楽しさ」にも惹かれるようになった。</p>
+<p>振り返ると、自分がゲームで一番好きなのは、知らない世界へ入っていく感覚なのだと思う。次の町、次のダンジョン、次の階層。その先に何があるのか分からない状態で一歩進むこと自体が好きだった。</p>
+<p>当然、自分でもゲームを作ってみたいと思ったことはある。一度Unityをインストールして、チュートリアルを見ながらCubeを置いた。床を作り、短いコードをコピーして、キーを押すとCubeが動いた。それだけなのにかなり感動した。「これを続ければ、自分のRPGも作れるのでは？」と思った。</p>
+<p>しかし、その次から急に難しくなった。敵を作りたい。C#。HPを作りたい。またC#。攻撃判定を作りたい。Collider、Rigidbody、Prefab、Component……。知らない言葉を一つ調べると、その説明の中にさらに知らない言葉が出てくる。ゲームのことを考えている時間より、検索している時間の方が長くなり、やがてUnityを起動しなくなった。</p>
+<p>考えが変わったのは生成AIに触れるようになってからだ。コードを頼む。Unityへ入れる。エラーが出る。エラーをAIへ渡す。原因を説明し、修正版を返してくる。もう一度試す。動いた。昔、自分が止まった場所を少しだけ越えた。</p>
+<p>もちろん、AIに「面白いゲームを作って」と言えば自分が遊びたいゲームが完成するわけではない。敵は何体なら楽しいのか。回復役が倒れたらどうするのか。このキャラクターは何者なのか。この音は気持ちいいのか。そういう問いには自分で答えなければならない。</p>
+<p>でも、それなら考えられる。自分が考える。AIが形にする。実際に遊ぶ。違えば直す。そうして始めたのが『LIKE A MOTH』です。最初の目標は「最低限、最初から最後まで遊べるもの」。このブログには成功だけでなく、失敗や作り直しも残していく。ゲームを作れなかった人間が、AIと一緒ならどこまで作れるのか。その記録です。</p>
+<div class="box"><b>AI CREW</b><span>Human — Creative Direction / Playtest</span><span>ChatGPT — Planning / Design</span></div><div class="box"><b>DEVELOPMENT STACK</b><span>Unity / C# / ChatGPT</span></div>
+
+<h2 id="record-002">RECORD 002 — LIKE A MOTHというゲームを考える</h2>
+<p>好きなゲームの要素を全部入れれば面白くなるわけではない。そこで、自分はゲームの何が好きなのかを考え直した。一つは、成長が目に見えること。もう一つは、役割の違う仲間がいること。</p>
+<p>LIKE A MOTHは4人パーティーにした。Alex、Judge、Eclair、Lumiera。プレイヤーは一人を操作し、残り三人はAIが動く。ただ4人が同時に攻撃するだけにはしたくなかった。Judgeが敵を凍らせ、Alexが砕く。Freeze → Shatter。EclairがBleedを蓄積し、Ruptureへつなぐ。Lumieraはパーティーを立て直す。</p>
+<p>世界は地上から地下へ進む。遺跡入口、地下都市・居住区、研究区画、封印区画、最深部。最初は古い遺跡にしか見えないが、深く進むと人が暮らした痕跡、研究施設、封印のために行われた行為が見えてくる。深く潜るほど文明の印象そのものが変わる構造にしたい。</p>
+<p>見た目はリアル3DではなくLow-poly。昔の3D RPGが好きだからという理由もあるが、単に古く見せたいわけではない。少ないポリゴンだからこそ形を強くする。環境もStone、Grey、Blue-grey、Dark Blueを基本に、Cyanの魔力、Goldの装置、Orange / Redの危険というルールを持たせた。</p>
+<p>古典RPGの成長感、4人の役割がつながる戦闘、Low-polyで想像の余地を残す世界、深く潜るほど過去の見え方が変わる遺跡。この4つがLIKE A MOTHの土台になった。</p>
+<div class="box"><b>TECH NOTE</b><span>4人Party / Freeze→Shatter / Bleed→Rupture / Five Depths / Modern Low-Poly</span></div>
+
+<h2 id="record-003">RECORD 003 — AIと最初の戦闘を作る</h2>
+<p>最初に形にしたかったのは、4人が一緒に戦っている状態だった。Alexは前線、JudgeはFreeze、EclairはBleed、LumieraはHeal。Judgeが敵を凍らせ、Alexの攻撃で砕け、Shatterが出る。自分で考えたルールが画面の中で起きた瞬間は、完成したゲームを遊ぶのとは違う嬉しさがあった。</p>
+<p>Bleedも最初から今の仕様ではない。初期はRuptureを起こすための印に近く、継続ダメージすらなかった。後で遊び「Freezeとの差が弱い」と感じ、DoTを追加した。作る、遊ぶ、違和感を見つける、変える。その繰り返しだった。</p>
+<p>AIの使い方も変わった。「コードを書いて」だけではなく、変更前を保存し、触ってはいけない部分を指定し、実装後にテストする。Checkpointと回帰確認を使い、AIに開発工程の一部を任せる形になっていった。</p>
+<p>同時にBlenderでLow-polyキャラクター制作も進めた。ゲーム中の距離からでも髪色、武器、衣装、シルエットで誰なのか分かることを優先した。UIも背景も音もまだ仮だったが、4人がいて、敵がいて、仲間が動き、連携が起きる。LIKE A MOTHが初めて「動くゲーム」になった。</p>
+<div class="box"><b>AI CREW</b><span>GPT系 — C# / Runtime / QA</span><span>3D Production Support — Blender workflow</span><span>Human — Playtest / Direction</span></div><div class="box"><b>DEVELOPMENT STACK</b><span>Unity 6 / URP / C# / Blender / ChatGPT</span></div>
+
+<h2 id="record-004">RECORD 004 — Cubeの世界から「封印された遺跡」へ</h2>
+<p>戦闘が動き始めると、次に気になったのは背景だった。そこでStage 1のEnvironment制作に入った。テーマは「封印された聖域」。冷たい石、Grey、Blue-grey、Dark Blue。そこへCyanとGoldの魔力。Orange / Redは危険表示に残す。</p>
+<p>StageはStart Area、Combat Zone、Central Ruins、Seal Area、Boss Gate、Boss Arenaへ進む。入口から奥へ行くほど柱が崩れ、像が壊れ、やがて封印装置が現れる。短いStageでも歩くだけで小さな物語が感じられるようにした。</p>
+<p>EnvironmentはGameplay Areaを完全3D、中遠景を軽量Low-poly architectureで補うHybrid 2.5D。敵もBasic、Heavy、Ranged、Chargerの4種類へ。最終的なtriangle数は480、518、410、494。細部より0.5秒で役割が分かるシルエットを優先した。</p>
+<p>この頃から「見た目を良くするためにゲームを壊してはいけない」と強く意識するようになった。変更前にCheckpointを作り、Scene hashを記録し、変更後にGameplayが変わっていないか確認する。Cubeと仮モデルだった画面が「自分のゲーム」に見え始めた時期だった。</p>
+<div class="box"><b>TECH NOTE</b><span>Gameplay Area = 3D / Mid-Far Background = Lightweight Low-Poly</span></div>
+
+<h2 id="record-005">RECORD 005 — 敵がいない。測ってみたら理由が違った</h2>
+<p>Stage 1を遊んでいると、途中から敵が少なくなり、何もいない時間が目立った。最初に疑ったのは、封印されたエリアの向こう側に敵がSpawnしていること。実際、そのバグは存在した。</p>
+<p>しかし計測すると主原因は別だった。開始時には6体いる。それを倒した後の補充は3秒に1体。一方、4人パーティーはそれ以上の速度で敵を倒していた。Spawnerが止まっていたのではなく、供給より撃破が速かった。</p>
+<p>そこで生存数、Spawn attempt、撃破を記録し、Target 3、4、5を比較した。数字だけなら4でも成立しそうだったが、実際に必殺技を使いながら遊ぶと5の方が戦場が途切れず気持ちよかった。最終的にTarget 5を採用した。</p>
+<p>この一件で開発方法が明確になった。違和感がある。もっともらしい原因を想像する。そこで直さない。まず測る。原因を分ける。候補を作る。そして最後は人間が遊んで決める。AIは大量のログと反復試験を担当し、「どちらが楽しいか」はHuman Gateで決める。</p>
+<p>この考え方は、その後のVoice、BGM、SE、Balanceでも繰り返すことになる。Stage 1はBoss、UI、Voice、BGM、SEまで揃い、「最低限遊べるもの」という最初の目標へ近づいていった。</p>
+<div class="box"><b>ANOMALY LOG</b><span>SYMPTOM: 敵が少ない</span><span>FIRST HYPOTHESIS: 封印区画へのSpawn</span><span>ROOT CAUSE: Kill pace &gt; Spawn supply</span><span>HUMAN DECISION: Target 5</span></div>
+<div class="box"><b>DEVELOPMENT STACK</b><span>Unity / C# / Telemetry / Automated Play QA / Human Gate</span></div>
+
+<h2 id="record-006">RECORD 006 — 広くしただけでは、探索にはならなかった。</h2>
+<p>Stage 1が「最低限遊べるもの」として完成し、次に取りかかったのは地下都市の居住区だった。最初は単純に、Stage 1より少し広くし、敵と経験値を増やせば次のStageらしくなると思っていた。</p>
+<p>ところがGrayboxを実際に歩いてみると、Mapは広いのに先へ進む必要がなかった。敵が同じ場所へ供給され続けるので、入口付近で戦い続けても攻略できてしまう。住居や広場、設備を作っても、プレイヤーから見れば背景でしかない。</p>
+<p>そこでStage 2だけ、敵の出現を有限のZone Encounterへ変更した。新しい区画へ進むと敵が現れ、倒し切るとその場所は静かになる。戦闘が終わったら周囲を見る。枝道へ入り、壊れたInfrastructureを探す。そして先へ進む。</p>
+<p>Gimmickにも問題があった。電源復旧やShelterという設定自体は気に入っていたが、初見では何をすればよいのか分かりにくい。そこで非常放送を使った。「電源が落ちている」「保守電源盤で復旧してほしい」。場所そのものは言わず、赤い非常灯、床を流れる光、標識を手掛かりにする。</p>
+<p>再び遊ぶと、今度はMapの広さに意味が生まれた。その場で敵を狩り続けるのではなく、「次の区画を見に行こう」と思えるようになった。</p>
+<p>ただ、別の問題も見えた。Gimmickを見つけるまでは面白い。でも見つけた後は、数秒その場に立つだけ。探索はゲームになったが、復旧作業はまだ「作業」だった。</p>
+<div class="box"><b>ANOMALY LOG</b><span>広いMapを作ることと、探索する価値を作ることは別だった。</span></div>
+<div class="box"><b>AI CREW</b><span>Human — Playtest / Gameplay judgment</span><span>Opus 5.5 — Foundation / Graybox / automated QA</span><span>GPT-6 Sol — Direction / integration planning</span></div>
+<div class="box"><b>DEVELOPMENT STACK</b><span>Unity 6 / C# / Zone Encounter / Telemetry / Project Memory</span></div>
+
+<h2 id="record-007">RECORD 007 — 敵に囲まれたまま、電源を入れる。</h2>
+<p>「復旧が作業になっている」という問題に対して、次に試したのは単純だった。敵を全部倒さなくても、電源を復旧できるようにする。</p>
+<p>安全にやるなら、周囲の敵を排除してから操作盤へ向かう。時間はかかるが確実だ。一方、敵が残ったまま復旧を始めることもできる。復旧中は移動が遅くなり、通常攻撃も使えない。AIの仲間は戦い続ける。被弾すれば作業が中断し、進捗も少し戻される。</p>
+<p>これで初めて、「敵を先に倒すか、それとも今ここで復旧を強行するか」という判断が生まれた。</p>
+<p>実際に遊んで特に良かったのは、復旧そのものより、その直後だった。Gimmickを解除すると大量のEXPが入り、個人LevelとParty Levelが一気に上がる。敵に囲まれた不利な状況で復旧を強行し、成功した瞬間に成長して形勢をひっくり返す。この流れには、想定していた以上の爽快感があった。</p>
+<p>そこで報酬の見せ方も変えた。非常放送は「第二区画、電力供給を確認」と世界の出来事だけを伝える。一方、ゲーム側はINFRASTRUCTURE RESTORED、獲得EXP、Stage Progressの増加を明確に表示する。世界観の説明と、プレイヤーに必要なゲーム情報を分けることにした。</p>
+<p>同時に、同じMapでも毎Run少し状況が変わる仕組みも試している。Shelterが使えるRun、別の設備だけが動くRun、報酬がItem・回復・EXPで変わるRun。MapそのものをProcedural生成するのではなく、「同じ地下都市だが、今回どこが生きているかが少し違う」という考え方だ。</p>
+<p>Stage 2のGrayboxは、ここで一つの区切りを迎えた。最初は「Stage 1を広くしたもの」だった。それがHuman Playtestを繰り返すうちに、進む、戦う、静かになる、探索する、危険を取るか判断する、設備を復旧する、世界が変わる、という独自のLoopへ変わった。</p>
+<p>そして次に考えているのは、なぜ一度クリアした遺跡へもう一度戻るのか、という問題だ。敵や設備からGを回収する。ランダムに現れるTreasureを探す。Rareな発見物は持ち帰る。遺跡調査ギルドで準備を整え、もう一度深層へ向かう。</p>
+<p>まだ実装は始まったばかりだが、LIKE A MOTHは「一つのStageを遊べるゲーム」から、「何度も遺跡へ戻りたくなるゲーム」を考える段階へ進み始めた。</p>
+<div class="box"><b>TECH NOTE</b><span>Stage 2 Core Gameplay Loop Prototype — HUMAN ACCEPTED WITH DEFERRED BALANCE / PRESENTATION</span></div>
+<div class="box"><b>NEXT DEPTH</b><span>Meta Progression — Save / G / RunLoot / Treasure / Guild / Shop</span></div>
+<div class="box"><b>AI CREW</b><span>Human — Human Gate / final feel</span><span>Opus 5.5 — Revision implementation / QA / architecture review</span><span>GPT-6 Sol — design decisions / next-phase architecture</span></div>
+
+<h2 id="record-008">RECORD 008 — 拾ったGは、まだ自分のものではない。</h2>
+<p>Stage 2の探索が形になってくると、次に気になったのは「なぜ同じ遺跡へもう一度行くのか」だった。Stageをクリアするだけなら、一度先へ進めば十分だ。そこで、Runの外まで続く報酬を作り始めた。</p>
+<p>まずGを追加した。ただし、拾った瞬間に自分の資産になるわけではない。Dungeonで手に入れたGは <b>Carried G</b>。Clearして初めてWalletへ入る。倒れたり撤退したりすればLost Gになる。一方、ItemやRareな発見物はその場で永久取得する。「通貨は危険にさらされる。でも発見そのものは奪わない」というルールにした。</p>
+<p>Treasureも、完全なランダム配置にはしなかった。固定Mapの中に候補地点を置き、Runごとにその一部だけが現れる。同じ地下居住区なのに、今日はあの路地に宝箱があるかもしれない。Mapを覚えることと、毎回少し探すことを両立させたかった。</p>
+<figure class="dev-shot"><img src="treasure_carried_g.png" alt="Stage 2でTreasureから30Gを回収しCarried G HUDへ反映された開発画面"><figcaption><span class="capture">DEVELOPMENT CAPTURE — M2/M2.1</span><br>Treasureから30Gを回収した直後。左上には常時表示のCarried G。まだWalletには入っていない。</figcaption></figure>
+<p>試遊してみると、Gは常時見えていた方がよかった。30G、60G、90Gと増えるほど「ここで死にたくない」という感覚が生まれる。Dark fantasyの緊張感を、単純な難易度ではなく「持ち帰りたいものがある」ことで作れるようになってきた。</p>
+<p>宝箱の見た目はまだGrayboxに近い。背景Objectと見分けづらい場面もあるし、Rareも最終的にはもっと光やEffectで特別にしたい。ただ、仕組みとしては「寄り道する理由」が一つ増えた。これはかなり大きかった。</p>
+<div class="box"><b>TECH NOTE</b><span>Spawn候補地点は固定、Active地点と中身はseeded。Spawn RNGとContent RNGは分離。</span><span>Carried G → ClearでWallet / Game Over・WithdrawalでLost G。</span></div>
+<div class="box"><b>ANOMALY LOG</b><span>Treasureの仕組みは機能したが、Grayboxでは背景との識別が弱い。Production Presentationへ繰り越し。</span></div>
+
+<h2 id="record-009">RECORD 009 — 遺跡の外にも、ゲームを作る。</h2>
+<p>GとTreasureを作ったことで、次の問題は自然に決まった。持ち帰ったものを、どこで使うのか。</p>
+<p>そこで「遺跡調査ギルド」の最小版を作った。まだ完成した3D拠点ではない。床と壁、四つの台、そして大きなUI。WALLET、SHOP、LOADOUT、EXPEDITION BOARD。見た目は完全にPrototypeだが、ゲーム全体の循環を確かめるには十分だった。</p>
+<figure class="dev-shot"><img src="guild_hub_lite.png" alt="遺跡調査ギルドHub-liteの開発画面。Wallet Shop Loadout Expedition Boardが表示されている"><figcaption><span class="capture">DEVELOPMENT CAPTURE — M3 HUB-LITE</span><br>最初の遺跡調査ギルド。完成した拠点ではなく、Wallet・Shop・Loadout・出発を一本につなぐための実験場。</figcaption></figure>
+<p>Dungeonで持っているのはCarried G。Guildに戻ればWallet G。ShopではWalletだけを使う。消耗品を買い、持込枠にセットし、掲示板から次の探索へ出る。Stage 2でTreasureを拾い、Clearして帰還するとWalletが増えている。</p>
+<p>これで初めて、LIKE A MOTHに「探索 → 戦利品 → 帰還 → 買い物 → 準備 → 再探索」というLoopが一本につながった。</p>
+<p>面白いのは、この基盤が新しいCharacterの設計まで変え始めたことだ。初期に考えていたTreasure Hunterのエドは、敵からGを盗む、Treasureを見つけやすくする、Bombで隠し部屋を開く、といった能力を持たせられる。しかも彼自身を非常に高額なGで雇えるCharacterにすれば、「頑張れば序盤から解放できる」というPlayer自身の目標にもなる。</p>
+<p>Stageを増やすだけではなく、Stageの外側にある仕組みが、Stageの遊び方まで変えていく。個人的には、ここでようやく「一周して終わるPrototype」から「何度も潜りたくなるゲーム」へ一歩進んだ感覚がある。</p>
+<div class="box"><b>AI CREW</b><span>Opus 5.5 — Save / Treasure / Hub-lite implementation and automated QA</span><span>GPT-6 Sol — Meta progression / economy / character-system direction</span><span>Human — Playtest / risk-reward and progression decisions</span></div>
+<div class="box"><b>DEVELOPMENT STACK</b><span>Unity 6 / C# / MetaSave / Seeded Treasure / Wallet & RunLoot / Hub-lite</span></div>
+<div class="box"><b>NEXT DEPTH</b><span>Ed — Recruitment Architecture / Exploration Expansion</span></div>
+
+<h2 id="record-010">RECORD 010 — 仲間が増えると、探索の仕方まで変わる。</h2>
+<p>G、Treasure、Guild、Shopまでつながったところで、かなり早いとは思いつつ、新しい仲間のことを考え始めた。名前はエド。実は完全な新キャラクターではなく、プロジェクトのかなり初期から案だけは存在していたTreasure Hunterだ。</p>
+<p>当時考えていたのは、短剣で素早く戦い、敵からItemを盗み、Bombを投げるキャラクターだった。ただ、その頃のLIKE A MOTHにはまだ「盗んだGをどう扱うか」も「Treasureを探す意味」も「持ち帰ったものを使うGuild」もなかった。能力のアイデアはあっても、それを受け止めるゲーム側の仕組みが足りていなかった。</p>
+<p>Stage 2を作り、TreasureがRunごとに現れ、拾ったGがCarried Gとして危険にさらされ、Guildへ帰ればWalletとして確定するようになった。そこで改めてエドを見ると、初期案の意味がまったく違って見えた。</p>
+
+<figure class="dev-shot"><img src="ed_character_concept.png" alt="LIKE A MOTHの新キャラクター、エドの将来構想をまとめたコンセプト紹介資料"><figcaption><span class="capture">CHARACTER CONCEPT — ED / TREASURE HUNTER</span><br>現在のMeta Progressionを前提に再構成したエドのコンセプト。画像内の能力・演出・50,000 Gなどの数値は構想・TEST表現であり、最終仕様ではない。</figcaption></figure>
+
+<p>例えばSteal。敵からGを盗めるなら、そのGはWalletへ直接入れるのではなくCarried Gにする。盗めば盗むほど稼げる。しかし、倒れれば失う。エドは金策に強いキャラクターであると同時に、「あと少し盗んでから帰るか」という欲まで増幅するキャラクターになる。</p>
+<p>Bombも、単なる攻撃技だけにはしたくない。遺跡にひび割れた壁を置き、爆破すると隠し部屋やTreasure、Archiveへの道が現れる。ただし、ここでエドを必須にはしたくない。エドを仲間にするとGuild Shopでも消費ItemのBombを扱えるようにし、誰でも同じ場所へ到達できるようにする。エドを編成すればBombを買わず、持込枠も使わずに済む。便利ではある。でも必須ではない。</p>
+<p>Treasureについても同じ考え方だ。Rare率を大幅に上げて「宝探しならエド一択」にするのではなく、Treasureを見つけやすくしたり、出現機会を少し増やしたりする方向を考えている。同じStageでも、誰を連れて行くかによって見る場所や寄り道の判断が少し変わる。それくらいが理想だ。</p>
+<p>そして、エドで一番やってみたいのが加入方法だ。彼はGuildのかなり序盤から姿を見せる。ただし、雇うには途方もなく高いGが必要になる。普通に先へ進むPlayerなら、すぐには手が届かない。でもTreasureを探し、何度も遺跡へ潜り、Gを貯め続ければ、かなり早い段階でも仲間にできる。</p>
+<p>Storyが進んだから自動的に加入するのではなく、「このキャラクターを早く使いたいから、今のStageをもう少し探索する」という選択肢を作りたい。逆に興味がなければ、そのまま先へ進んでもいい。いつエドを仲間にするか自体がPlayerの遊び方になる。</p>
+<p>これは今後のCharacter Designで大事にしたい考え方かもしれない。新しい仲間を手に入れることは、単に攻撃方法が一つ増えるだけではない。探索できる場所、見えるもの、持ち帰れるものまで少し広がる。</p>
+<p><b>Character Unlock = Exploration Expansion.</b></p>
+<p>まだエドの戦闘性能も、Steal率も、Bombの性能も、加入価格も決まっていない。むしろ今は決めない。先に「エドを仲間にしたことで、同じ遺跡をもう一度見に行きたくなるか」を作って確かめたい。</p>
+<div class="box"><b>DESIGN PRINCIPLE</b><span>Ed = useful, not mandatory.</span><span>エドを使えば探索は便利になる。しかし、エドがいなければ到達できない必須進行にはしない。</span></div>
+<div class="box"><b>SYSTEM CONNECTION</b><span>Steal → Carried G / Treasure Sense → Exploration / Bomb → Secret Route / Recruitment → Wallet G / Bomb Shop Unlock → Guild</span></div>
+<div class="box"><b>STATUS</b><span>Future Character Direction — Human Supported / Gameplay & Balance Not Locked</span></div>
+<div class="box"><b>NEXT DEPTH</b><span>Ed Recruitment Architecture → Gameplay Prototype → Steal / Treasure Sense / Bomb</span></div>
+
+</section></main>
+<footer><div class="wrap">LIKE A MOTH — Development Archive / RECORD 001–010<br>Next: Ed — Recruitment Architecture / Gameplay Prototype</div></footer>
+</body></html>
